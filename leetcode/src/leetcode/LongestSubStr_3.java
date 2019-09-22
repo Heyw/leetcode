@@ -47,6 +47,6 @@ public class LongestSubStr_3 {
       }
       public static void main(String[] args) {
 		String str="bcdefgahijklmnadef";
-		new LongestSubStr().solution2(str);
+		new LongestSubStr_3().solution2(str);
 		}
 }
