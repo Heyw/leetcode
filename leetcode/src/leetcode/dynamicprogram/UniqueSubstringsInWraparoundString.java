@@ -1,9 +1,5 @@
 package leetcode.dynamicprogram;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * s是“abcdefghijklmnopqrstuvwxyz”的无限循环，然后输入p，求出p有多少个不同的非空子字符串出现在s中，
  * 例如：p="aca",只有a和c是出现在s中

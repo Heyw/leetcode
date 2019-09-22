@@ -26,6 +26,7 @@ Explanation: The given directed graph will be like this:
  */
 public class RedundantConnectionII685 {
 	public int[] findRedundantDirectedConnection(int[][] edges) {
+		return null;
 	        
 	    }
 }

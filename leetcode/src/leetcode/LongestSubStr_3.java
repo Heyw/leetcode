@@ -6,7 +6,7 @@ package leetcode;
  * @author Administrator
  *
  */
-public class LongestSubStr {
+public class LongestSubStr_3 {
 	
 	//该解法忽视了indexOf()本身的搜索复杂度
       public int solution1(String str){
