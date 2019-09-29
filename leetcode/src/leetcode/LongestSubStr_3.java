@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.HashMap;
 
 /**
  * 给定一串字符串，求出该字符串最长不包含重复字符的子字符串
@@ -8,24 +9,31 @@ package leetcode;
  */
 public class LongestSubStr_3 {
 	
-	//该解法忽视了indexOf()本身的搜索复杂度
-      public int solution1(String str){
-    	  String substr=new String();
-    	  String maxSubStr=new String();
-    	  for(int i=0;i<str.length();i++){
-    		  Character c=str.charAt(i);
-    		  int j=0;
-    		  if((j=substr.indexOf(c.toString()))>=0){
-    			  substr=str.substring(i+j+1-substr.length(),i+1);
-    		  }
-    		  else
-    		     substr+=str.charAt(i);
-    		  if(substr.length()>=maxSubStr.length())
-                 maxSubStr=substr;
-    	  }
-    	  System.out.println(maxSubStr);
-    	 return maxSubStr.length();
-      }
+	/**
+	 * 滑动窗口解法，选择start和end，不断左移end,使得[start,end]之类的字符串保持不重复，
+	 * 如果end指向的字符已经出现过，那么start为上一次出现该字符的位置和当前start位置的较大值；
+	 * @param s
+	 * @return
+	 */
+	 public int lengthOfLongestSubstring(String s) {
+	        HashMap<Character,Integer> charMap=new HashMap<>();
+	        char[] chars=s.toCharArray();
+	        int start=0,end=0,length=chars.length;
+	        int max=0;
+	        while(start<length&&end<length){
+	            
+	            
+	            if(charMap.containsKey(chars[end])){
+	            	
+	                start=Math.max(charMap.get(chars[end])+1, start);
+	            }
+	            max=Math.max(max,end-start+1);
+	            charMap.put(chars[end],end++);
+	            
+	        }
+	    	  
+	    	 return max;
+	    }
       
       //该方法核心就是利用两个指针i和j，其中i指向当前字符所在位置，j指向上次重复字符的后一个位置，这样确保i和j之间没有任何重复字符
       //每次循环i向前移动一位，就判断下当前字符是否重复出现过，如果重复出现过，接着判断上次重复的位置是否大于该字符串重复的位置
@@ -46,7 +54,7 @@ public class LongestSubStr_3 {
 
       }
       public static void main(String[] args) {
-		String str="bcdefgahijklmnadef";
-		new LongestSubStr_3().solution2(str);
+		String str="bcdefgahijklmnadef";//"pwwkew";//"bcdefgahijklmnadef";
+		System.out.println(new LongestSubStr_3().lengthOfLongestSubstring(str));
 		}
 }
